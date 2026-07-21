@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite this repository when using its code, documentation, or analytical framework."
+title: "Environmental Sustainability: An Explainable AI Framework for Assessing the Impact of Thermal Power Generation and Coal Production on Air Quality Index (AQI) in India Using Public Government Data"
+type: software
+authors:
+  - family-names: "Nibhanupudi"
+    given-names: "Venkata Arun Srinivas"
+repository-code: "https://github.com/VenkataArunSrinivas/environmental-sustainability-aqi-framework"
+url: "https://github.com/VenkataArunSrinivas/environmental-sustainability-aqi-framework"
+version: 0.1.0
+date-released: 2026-07-21
+license: MIT
