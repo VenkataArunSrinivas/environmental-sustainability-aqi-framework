@@ -1,54 +1,26 @@
 # Python
 __pycache__/
 *.py[cod]
-*.so
 .pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
-
-# Virtual environments
 .venv/
 venv/
-env/
 
-# Secrets and local settings
+# Secrets and local configuration
 .env
-.env.*
-!.env.example
-credentials*.json
-*.pem
-*.key
+*.local.yaml
 
-# Jupyter
-.ipynb_checkpoints/
-
-# Data and generated artifacts
+# Raw or restricted source data
+# Keep data/raw/README.md and folder structure, but do not commit source files unless redistribution is allowed.
 data/raw/**/*
+!data/raw/README.md
 !data/raw/**/.gitkeep
-!data/raw/**/README.md
-data/interim/**/*
-!data/interim/.gitkeep
-data/processed/**/*
-!data/processed/.gitkeep
-outputs/figures/**/*
-!outputs/figures/.gitkeep
-outputs/tables/**/*
-!outputs/tables/.gitkeep
-outputs/models/**/*
-!outputs/models/.gitkeep
-*.joblib
-*.pkl
-*.pickle
-*.parquet
-*.feather
-*.h5
-*.hdf5
 
-# Office/temp/system files
-~$*
+# Generated model artifacts
+outputs/models/*.joblib
+outputs/models/*.pkl
+
+# OS/editor files
 .DS_Store
 Thumbs.db
-*.tmp
-*.log
+.vscode/
+.idea/

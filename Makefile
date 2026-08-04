@@ -1,25 +1,25 @@
 PYTHON ?= python
 
-.PHONY: setup audit harmonize baseline test clean
+.PHONY: install audit interim test panel models clean
 
-setup:
-	$(PYTHON) -m pip install --upgrade pip
-	$(PYTHON) -m pip install -e ".[dev]"
+install:
+	$(PYTHON) -m pip install -r requirements.txt
+	$(PYTHON) -m pip install -e .
 
 audit:
-	$(PYTHON) scripts/run_data_audit.py
+	PYTHONPATH=src $(PYTHON) scripts/run_data_audit.py --config config/project_config.yaml
 
-harmonize:
-	$(PYTHON) scripts/build_state_month_panel.py
-
-baseline:
-	$(PYTHON) scripts/run_baseline_models.py
+interim:
+	PYTHONPATH=src $(PYTHON) scripts/run_interim_analysis.py --config config/project_config.yaml --allow-provisional-aqi
 
 test:
-	$(PYTHON) -m pytest
+	PYTHONPATH=src $(PYTHON) -m pytest
+
+panel:
+	PYTHONPATH=src $(PYTHON) scripts/build_harmonized_panel.py --config config/project_config.yaml
+
+models:
+	PYTHONPATH=src $(PYTHON) scripts/run_baseline_models.py --config config/project_config.yaml
 
 clean:
-	find . -type d -name "__pycache__" -prune -exec rm -rf {} +
-	find . -type d -name ".pytest_cache" -prune -exec rm -rf {} +
-	find outputs/figures outputs/tables outputs/models -type f ! -name ".gitkeep" -delete
-	find data/interim data/processed -type f ! -name ".gitkeep" -delete
+	rm -f data/interim/*.csv data/processed/*.csv outputs/tables/*.csv outputs/figures/*.png
