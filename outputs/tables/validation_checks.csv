@@ -1,0 +1,5 @@
+check,value
+exact_duplicates,0
+station_date_duplicates,0
+date_parse_failures,0
+all_pollutants_missing,34374

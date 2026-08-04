@@ -1,0 +1,3 @@
+model,target,train_n,test_n,mae,rmse,r2,interpretive_status
+Previous-month persistence,PM2.5 field median,532,255,12.911960784313726,18.064501339019877,0.6684369500031544,Pipeline smoke test; not a final RQ4 result
+Location-season Ridge,PM2.5 field median,532,311,14.899343173777437,22.983028724412243,0.4814415530619258,Pipeline smoke test; industrial and weather drivers absent
