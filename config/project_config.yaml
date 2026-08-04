@@ -1,0 +1,46 @@
+project:
+  title: "Environmental Sustainability: An Explainable AI Framework for Assessing Associations of Thermal Power Generation and Coal Consumption With Air Quality"
+  student: "Venkata Arun Srinivas Nibhanupudi"
+  repository_url: "https://github.com/VenkataArunSrinivas/environmental-sustainability-aqi-framework"
+
+scope:
+  primary_states:
+    - Gujarat
+    - Maharashtra
+  conditional_states:
+    - Odisha
+  search_start: "2019-01-01"
+  search_end: "2026-12-31"
+  final_common_period_min_months: 12
+  final_common_period_target_months: 18
+
+paths:
+  aqi_raw_dir: "data/raw/aqi_cpcb"
+  coal_raw_dir: "data/raw/power_npp/coal"
+  thermal_raw_dir: "data/raw/power_npp/thermal"
+  weather_monthly: "data/processed/weather_state_month.csv"
+  industrial_monthly: "data/processed/industrial_state_month.csv"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  figures_dir: "outputs/figures"
+  tables_dir: "outputs/tables"
+
+files:
+  aqi_workbooks:
+    Gujarat: "Gujarat.xlsx"
+    Maharashtra: "Maharasthra.xlsx"
+    Odisha: "Odisha.xlsx"
+
+quality:
+  pollutant_columns: ["Ozone", "CO", "SO2", "NO2", "PM10", "PM2.5"]
+  minimum_pollutants_for_provisional_aqi: 3
+  require_pm_for_provisional_aqi: true
+  station_month_completeness: 0.75
+  minimum_common_months_for_state: 12
+
+modeling:
+  target_preference: ["aqi_reported", "aqi_validated", "pm25_median", "pm10_median"]
+  lags: [1, 2]
+  random_state: 640
+  holdout_start: "2023-01-01"
+  ridge_alphas: [0.1, 1.0, 10.0, 100.0]
