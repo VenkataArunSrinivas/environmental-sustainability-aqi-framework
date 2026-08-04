@@ -1,0 +1,20 @@
+variable_name,definition,data_type,unit_or_allowed_values,role,missing_value_handling,status
+state,Standardized Indian state name,categorical,"Gujarat; Maharashtra; Odisha",geographic key/control,Required,Collected
+city,Monitoring city,categorical,Source-defined,descriptive grouping,Retain as missing only if source is missing,Collected
+station,Monitoring station name,categorical,Source-defined,repeated-measures unit,Required,Collected
+month,First day of calendar month,date,YYYY-MM-01,time and merge key,Required,Derived
+pm25_median,Station-month median PM2.5 source field,numeric,Source unit to verify,fallback outcome/profile,Exclude station-month if completeness rule fails,Collected/derived
+pm10_median,Station-month median PM10 source field,numeric,Source unit to verify,fallback outcome/profile,Exclude station-month if completeness rule fails,Collected/derived
+aqi_reported,Official reported monthly AQI,numeric,0-500,preferred outcome,Not imputed,Not present
+aqi_validated,Validated CPCB-compliant derived AQI,numeric,0-500,conditional outcome,Not created unless method requirements are verified,Pending
+aqi_provisional,Opt-in diagnostic AQI reconstruction,numeric,0-500,data-readiness diagnostic only,Missing unless at least 3 pollutants including PM are available,Interim only
+aqi_ready_coverage_rate,Proportion of calendar days meeting provisional pollutant sufficiency,numeric,0-1,eligibility/quality,Calculated explicitly,Derived
+thermal_generation_gwh,Monthly thermal electricity generation,numeric,GWh,primary driver 1,No zero fill or unsupported interpolation,Partial collection
+coal_consumption_kt,Monthly coal consumed at thermal power stations,numeric,thousand tonnes,primary driver 2,No zero fill or unsupported interpolation,Partial collection
+coal_receipt_kt,Monthly coal receipts at thermal power stations,numeric,thousand tonnes,sensitivity/context,No zero fill,Partial collection
+closing_stock_kt,Month-end coal stock,numeric,thousand tonnes,sensitivity/context,No zero fill,Partial collection
+rainfall_mm,Monthly rainfall,numeric,millimetres,weather control,Document aggregation and missingness,Not collected
+temperature_c,Monthly mean temperature,numeric,degrees Celsius,weather control,Document aggregation and missingness,Not collected
+humidity_pct,Monthly mean relative humidity,numeric,percent,optional weather control,Document aggregation and missingness,Not collected
+season,Indian seasonal category,categorical,"Winter; Pre-monsoon; Monsoon; Post-monsoon",temporal control,Derived from month,Pending
+station_count,Number of valid stations contributing to a state-month summary,integer,nonnegative,monitoring-quality context,Calculated,Derived

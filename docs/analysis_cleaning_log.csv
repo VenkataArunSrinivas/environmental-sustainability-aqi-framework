@@ -1,0 +1,8 @@
+issue,variables_affected,detection_method,treatment_applied,rationale
+Missing pollutant fields,"O3; CO; SO2; NO2; PM10; PM2.5",Null counts and all-pollutant-missing rows,"Retain nulls; apply station-month completeness rules; report exclusions",Zero is a plausible physical value and cannot represent missingness
+Date/type inconsistency,"From Date; To Date; pollutant fields",Parsing/coercion checks,"Parse dates; coerce numeric values; log failures",Supports consistent time keys without modifying raw files
+Duplicate records,"state; city; station; date",Composite-key validation,"Flag and resolve; current collection has no duplicates",Prevents repeated observations
+Unequal station coverage,"station; city; state; month",Counts and coverage rates,"Use completeness flags; report station counts; balanced-station sensitivity",Separates network change from environmental variation
+AQI unavailable,Outcome field,Schema inspection,"Use reported AQI or validated derivation; otherwise PM2.5/PM10",Avoids presenting an unsupported reconstruction as official AQI
+Industrial report inconsistency,"thermal generation; coal fields",Header/unit/report-type audit,"Select one consistent report definition",Prevents mixing incompatible series
+Repeated state-month exposure,"industrial features",Duplicate exposure-key audit,"Keep shared state-month rows in the same validation fold",Prevents train-test leakage and false effective sample inflation

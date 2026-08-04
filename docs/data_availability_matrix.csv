@@ -1,0 +1,7 @@
+component,required_for_final_model,current_status,continuous_common_period_confirmed,main_risk,decision
+Air-quality outcome,Yes,Station-day pollutant fields collected for Aug 2021-Jul 2023,No,AQI absent and completeness varies,"Validate AQI or adopt PM2.5/PM10"
+Thermal generation,Yes,Sample reports collected for Jan 2021 and Jan 2023,No,Report types/sector coverage may differ,"Choose one report definition and collect monthly series"
+Coal consumption,Yes,Selected plant-month statements collected,No,Plant-to-state mapping and discontinuous months,"Collect continuous series and verify mapping"
+Meteorology,Yes,Not yet collected,No,Access and aggregation,"Collect rainfall and temperature"
+Population/structure,Conditional,Not yet collected,No,Collinearity with state effects,"Use descriptively or time-varying estimate; omit static coefficient in fixed-effects model"
+Odisha inclusion,Conditional,Only eight valid state-month monitoring summaries under current diagnostic rule,No,Short usable period,"Include only if at least 12 common valid months are obtained"
